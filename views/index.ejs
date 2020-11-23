@@ -1,0 +1,62 @@
+
+<%- include('partials/header') -%>
+
+    <div class="container pt-5">
+      
+      <%- include('partials/messages') -%>
+
+        <form action="/employee" method="GET">
+<div class="row">
+
+     
+<div class="col offset-6">
+          <div id="search" class="form-group row">
+            <label for="search">Search:</label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="name" id="search" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      </form>
+
+      </div>
+
+      <div class="container">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% employees.forEach((employee)=>{ %>
+
+          <tr>
+            <th scope="row"><%= employee.name %></th>
+            <td><%= employee.designation %></td>
+            <td><%= employee.salary %></td>
+            <td>
+              <a href="/edit/<%= employee.id %>" class="btn btn-primary">Edit</a>
+              <form action="/delete/<%= employee.id  %>?_method=DELETE" style="display: inline;" method="POST">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <button type="submit" style="cursor:pointer" class="btn btn-danger">DELETE </button>
+              </form>
+            </td>
+          </tr>
+          <% })%>
+
+        </tbody>
+      </table>
+
+    </div>
+
+    </div>
+ 
+    <% -include('Partials/footer') -%>

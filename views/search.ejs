@@ -1,0 +1,41 @@
+<%- include('Partials/header') -%>
+
+<section class="text-center">
+  <div class="container">
+    <h1>Search Employee</h1>
+    <form action="/employee" method="GET">
+      <div class="col-8 mx-auto">
+        <div class="form-group">
+          <input type="text" name="name" class="form-control" id="exampleInputPassword1" />
+        </div>
+
+        <button type="submit" class="btn btn-danger btn-block">Search in Database</button>
+      </div>
+    </form>
+
+    <% if(employee){%>
+
+    <h4 class="text-danger my-4">Search Results:</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Designation</th>
+          <th scope="col">Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= employee.name %></th>
+          <td><%= employee.designation %></td>
+          <td><%= employee.salary %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%}else if(employee != ''){%>
+    <div class="col-6 offset-3 mt-3 alert alert-danger">Employee does not exist</div>
+    <%}%>
+  </div>
+</section>
+
+<%- include('Partials/footer') -%>
